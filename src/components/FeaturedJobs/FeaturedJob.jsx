@@ -1,12 +1,20 @@
+import { useEffect, useState } from "react";
+
 const FeaturedJob = () => {
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    fetch("jobs.json")
+      .then((res) => res.json())
+      .then((data) => setJobs(data));
+  }, []);
+
   return (
     <div>
-      <h2 className="text-5xl text-center">Featured jobs</h2>
+      <h2 className="text-5xl text-center">Featured jobs : {jobs.length}</h2>
       <p className="text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione rem
-        possimus perspiciatis voluptatum magni architecto dolorem voluptas?
-        Aperiam quam praesentium natus illum harum. Cum quibusdam saepe sequi
-        magnam vitae ut!
+        Explore thousands of job opportunities with all the information you
+        need. Its your future
       </p>
     </div>
   );
